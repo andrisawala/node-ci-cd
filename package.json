@@ -1,0 +1,14 @@
+{
+  "name": "node-ci-cd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:andrisawala/node-ci-cd.git",
+  "author": "andrijunaedi <andrijunaedi126@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
