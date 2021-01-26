@@ -3,4 +3,4 @@ const app = express();
 
 app
   .get('/', (req, res) => res.send('Lieur CI/CD..'))
-  .listen(5000, () => console.log('server live...'));
+  .listen(3000, () => console.log('server live...'));
