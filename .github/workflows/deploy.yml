@@ -20,4 +20,4 @@ jobs:
         run: yarn install
 
       - name: Running server
-        run: yarn start
+        run: pm2 restart test
