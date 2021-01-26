@@ -17,7 +17,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
         with:
-          source: '.'
+          source: 'node-ci-cd/index.js'
           target: '/var/www/mysite'
 
       - name: Executing remote command
