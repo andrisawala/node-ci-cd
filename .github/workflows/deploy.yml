@@ -19,7 +19,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
           script: |
-          cd ${{ secrets.PROJECT_PATH }}
-          git pull origin main
-          yarn install
-          pm2 restart node-app
+            cd ${{ secrets.PROJECT_PATH }}
+            git pull origin main
+            yarn install
+            pm2 restart node-app
