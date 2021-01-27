@@ -20,6 +20,8 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ${{ secrets.PROJECT_PATH }}
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/andri
             git pull origin main
             sudo yarn install
             sudo pm2 restart node-app
