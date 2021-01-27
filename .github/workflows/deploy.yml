@@ -1,6 +1,9 @@
 name: Deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -14,4 +17,9 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
-          script: cd ${{ secrets.PROJECT_PATH }} && sh deploy.sh
+          port: ${{ secrets.PORT }}
+          script: |
+          cd ${{ secrets.PROJECT_PATH }}
+          git pull origin main
+          yarn install
+          pm2 restart node-app
