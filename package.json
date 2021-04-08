@@ -6,7 +6,7 @@
   "author": "andrijunaedi <andrijunaedi126@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.17.1"
