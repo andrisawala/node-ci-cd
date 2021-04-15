@@ -7,6 +7,9 @@ on:
 jobs:
   docker-hub-ci:
     runs-on: ubuntu-latest
+    env:
+      STACK_PORT: 3000
+      STACK_NAME: web
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v2
@@ -32,9 +35,6 @@ jobs:
         run: echo ${{ steps.docker_build.outputs.digest }}
       - name: Deploy to Docker Swarm
         uses: appleboy/ssh-action@master
-        env:
-          STACK_PORT: 3000
-          STACK_NAME: web
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
@@ -45,5 +45,5 @@ jobs:
             eval "$(ssh-agent -s)"
             ssh-add ${{ secrets.SSH_PATH }}
             git pull origin main
-            sudo PORT=${STACK_PORT} VERSION=${{ steps.get_version.outputs.SOURCE_TAG }} docker stack deploy --compose-file docker-compose.yml ${STACK_NAME}
+            sudo PORT=${{ env.STACK_PORT }} VERSION=${{ steps.get_version.outputs.SOURCE_TAG }} docker stack deploy --compose-file docker-compose.yml ${{ env.STACK_NAME }}
             sudo docker system prune -f
