@@ -3,12 +3,12 @@ version: '3.5'
 services:
   web:
     container_name: node-ci-cd
-    environment: 
-        - PORT=${PORT}
-        - VERSION=${VERSION}
+    environment:
+      - PORT=${PORT}
+      - VERSION=${VERSION}
     image: andrijunaedi/node-ci-cd:${VERSION}
     ports:
       - ${PORT}:3000
-      deploy:
-        mode: replicated
-        replicas: 2
+    deploy:
+      mode: replicated
+      replicas: 2
